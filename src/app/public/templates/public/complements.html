@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% from '/macros/_card.html' import render_card %}
+
+{% block title %}
+    {{ super() }} Opinie
+{% endblock title %}
+
+{% block container %}
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center" style="font-size:70px">Opinie</h1>
+        </div>
+    </div>
+
+    {% for item in menu %}
+        {% if item.type == 'equipment' %}
+            {{ render_card(name=item.name, description=item.description, position='horizontal', prices=prices) }}
+        {% endif %}
+    {% endfor %}
+
+    {% for item in menu %}
+        {% if item.type == 'weights' %}
+            {{ render_card(name=item.name, description=item.description, position='horizontal', prices=prices) }}
+        {% endif %}
+    {% endfor %}
+{% endblock container %}
